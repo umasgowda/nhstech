@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * @author piksel
+ * Responsible for processing Skills data.
  */
 @Service
 public class SkillsService {

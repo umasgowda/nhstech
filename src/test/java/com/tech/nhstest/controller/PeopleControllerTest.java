@@ -24,9 +24,6 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-/**
- * @author Uma Shivalingaiah
- */
 
 @RunWith(MockitoJUnitRunner.class)
 public class PeopleControllerTest {

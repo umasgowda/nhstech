@@ -8,12 +8,12 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * @author Uma Shivalingaiah
+ * Responsible for processing the data.
  */
 @Service
 public class PeopleService {
 
-
+    //This is temporary code as the data is small. This could be replaced by persistance layer if the data needs to be stored permanently.
     private static List<People> peopleList = new ArrayList<>();
 
     public List<People> getAllPeople() {

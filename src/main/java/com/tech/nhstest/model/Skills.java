@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Uma Shivalingaiah
+ * Model responsible for holding skills data.
  */
 @Data
 @Builder

@@ -15,7 +15,6 @@ import java.util.List;
 
 
 /**
- * @author Uma Shivalingaiah
  *
  * Reponsible for managing people API CRUD resources
  */

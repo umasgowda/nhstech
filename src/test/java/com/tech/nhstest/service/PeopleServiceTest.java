@@ -7,6 +7,7 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -14,9 +15,7 @@ import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.nullValue;
 
-/**
- * @author Uma Shivalingaiah
- */
+
 @RunWith(MockitoJUnitRunner.class)
 public class PeopleServiceTest {
 
@@ -31,9 +30,9 @@ public class PeopleServiceTest {
 
     @Test
     public void testCRUDOperations() {
-        Skills skills = new Skills(EXPERTISE, List.of("java", "dotnet", "php"));
-        People expectedResult = new People(ID, FOO, List.of(skills));
-        List<People> inputPeopleList = List.of(expectedResult);
+        Skills skills = new Skills(EXPERTISE, Arrays.asList("java", "dotnet", "php"));
+        People expectedResult = new People(ID, FOO, Arrays.asList(skills));
+        List<People> inputPeopleList = Arrays.asList(expectedResult);
 
         //adds people
         peopleService.addPeople(inputPeopleList);
@@ -47,9 +46,9 @@ public class PeopleServiceTest {
         assertThat(actualResultById, is(expectedResult));
 
         //Update People And Skills
-        Skills newSkills1 = new Skills(EXPERTISE, List.of("A", "B"));
-        Skills newSkills2 = new Skills(WORKING, List.of("D", "E", "F"));
-        People newPeople = new People(ID, FOO, List.of(newSkills1, newSkills2));
+        Skills newSkills1 = new Skills(EXPERTISE, Arrays.asList("A", "B"));
+        Skills newSkills2 = new Skills(WORKING, Arrays.asList("D", "E", "F"));
+        People newPeople = new People(ID, FOO, Arrays.asList(newSkills1, newSkills2));
         peopleService.updatePeople(newPeople, ID);
         People resultAfterUpdate = peopleService.getPeopleById(ID);
         assertUpdatedPeopleAndSkills(resultAfterUpdate);

@@ -13,7 +13,6 @@ import java.util.List;
 
 
 /**
- * @author Uma Shivalingaiah
  *
  * Responsible for managing skills api CRUD resources
  */
