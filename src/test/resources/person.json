@@ -1,0 +1,72 @@
+[
+  {
+  "name": "A Yond",
+  "id": "1",
+  "skills": [
+    {
+    "level": "expert",
+    "skillsList": [
+      "java",
+      "spring",
+      "html"
+    ]
+  },
+    {
+      "level": "Practitioner",
+      "skillsList": [
+        "docker",
+        "javascript",
+        "springboot",
+        "spring mvc"
+      ]
+    },
+    {
+      "level": "Working",
+      "skillsList": [
+        "dotnet",
+        "php"
+      ]
+    },
+    {
+      "level": "Awareness",
+      "skillsList": [
+        "aws"
+      ]
+    }
+  ]
+},
+  {
+    "name": "B Sam",
+    "id": "2",
+    "skills": [{
+      "level": "expert",
+      "skillsList": [
+        "dotnet",
+        "junit",
+        "tdd"
+      ]
+    },
+      {
+        "level": "Practitioner",
+        "skillsList": [
+          "bdd",
+          "nodejs",
+          "springboot",
+          "microservices"
+        ]
+      },
+      {
+        "level": "Working",
+        "skillsList": [
+          "docker"
+        ]
+      },
+      {
+        "level": "Awareness",
+        "skillsList": [
+          "azurecloud"
+        ]
+      }
+    ]
+  }
+]
