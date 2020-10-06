@@ -24,10 +24,23 @@ public class PeopleSkillsController {
     @Autowired
     private PeopleSkillsWebService peopleSkillsWebService;
 
+    /**
+     * GET /people endpoint returns list of people.
+     *
+     * @return returns list of people skills.
+     */
     @RequestMapping(value = "/people", method = RequestMethod.GET)
     public List<People> getAllPeople() {
         return peopleSkillsWebService.getAllPeople();
     }
+
+    /**
+     * GET /people/{id} endpoint accepts people id in the url path and returns
+     * single people json response for the given id.
+     *
+     * @param id the path variable peopleId
+     * @return returns single people skills data
+     */
 
     @RequestMapping(value = "/people/{id}", method = RequestMethod.GET)
     public ResponseEntity<People> getPeopleById(@PathVariable String id) {
@@ -38,16 +51,34 @@ public class PeopleSkillsController {
         return new ResponseEntity<People>(people, HttpStatus.NOT_FOUND);
     }
 
+    /**
+     * POST /people endpoint accepts collection of people skills json data in request body.
+     *
+     * @param peopleList input collection of people
+     */
     @RequestMapping(value = "/people", method = RequestMethod.POST)
     public void addPeople(@RequestBody List<People> peopleList) {
         peopleSkillsWebService.addPeople(peopleList);
     }
+
+    /**
+     * PUT /people/{id} endpoint accepts people skills json data in the request body and
+     * updates the people skills data for the given id.
+     *
+     * @param people the people data to be updated
+     * @param id id of the people to be updated
+     */
 
     @RequestMapping(value = "/people/{id}", method = RequestMethod.PUT)
     public void updatePeople(@RequestBody People people, @PathVariable String id) {
         peopleSkillsWebService.updatePeople(people, id);
     }
 
+    /**
+     * DELETE people/{id} deletes the people skills data for given id.
+     *
+     * @param id the path variable id.
+     */
     @RequestMapping(value = "/people/{id}", method = RequestMethod.DELETE)
     public void deletePeople(@PathVariable String id) {
         peopleSkillsWebService.deletePeople(id);
