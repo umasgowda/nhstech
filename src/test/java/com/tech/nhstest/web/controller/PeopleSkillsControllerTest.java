@@ -1,18 +1,19 @@
-package com.tech.nhstest.controller;
+package com.tech.nhstest.web.controller;
 
 
-import com.tech.nhstest.model.People;
-import com.tech.nhstest.model.Skills;
-import com.tech.nhstest.service.PeopleService;
+import com.tech.nhstest.web.model.People;
+import com.tech.nhstest.web.model.Skills;
+import com.tech.nhstest.web.service.PeopleSkillsWebService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,14 +26,15 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 
-@RunWith(MockitoJUnitRunner.class)
-public class PeopleControllerTest {
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class PeopleSkillsControllerTest {
 
     List<People> peopleList;
     @InjectMocks
-    private PeopleController peopleController;
+    private PeopleSkillsController peopleSkillsController;
     @Mock
-    private PeopleService peopleService;
+    private PeopleSkillsWebService peopleSkillsWebService;
 
     @Before
     public void setUp() {
@@ -45,17 +47,17 @@ public class PeopleControllerTest {
     }
 
     @Test
-    public void addPeopleAddsThePeopleRecords() {
-        peopleController.addPeople(peopleList);
+    public void addPeopleApiAddsThePeopleRecords() {
+        peopleSkillsController.addPeople(peopleList);
 
-        verify(peopleService).addPeople(peopleList);
+        verify(peopleSkillsWebService).addPeople(peopleList);
     }
 
     @Test
-    public void testGetAllPeoples() {
-        when(peopleService.getAllPeople()).thenReturn(peopleList);
+    public void getAllPeopleApiReturnsListOfPeopleRecords() {
+        when(peopleSkillsWebService.getAllPeople()).thenReturn(peopleList);
 
-        List<People> result = peopleController.getAllPeople();
+        List<People> result = peopleSkillsController.getAllPeople();
         assertThat(result.size(), is(2));
     }
 
@@ -63,9 +65,9 @@ public class PeopleControllerTest {
     public void testGetPeopleByIdSuccessfulWhenRecordExistForGivenId() {
         Skills skills = Skills.builder().level("expertise").skillsList(Arrays.asList("A", "B", "c")).build();
         People people = People.builder().id("1").name("foo").skills(Arrays.asList(skills)).build();
-        when(peopleService.getPeopleById("1")).thenReturn(people);
+        when(peopleSkillsWebService.getPeopleById("1")).thenReturn(people);
 
-        ResponseEntity<People> result = peopleController.getPeopleById("1");
+        ResponseEntity<People> result = peopleSkillsController.getPeopleById("1");
 
         assertThat(result.getStatusCode(), is(HttpStatus.OK));
         assertThat(result.getBody(), is(people));
@@ -74,9 +76,9 @@ public class PeopleControllerTest {
 
     @Test
     public void testGetPeopleByIdReturns404ErrorWhenRecordDoesNotExistForGivenId() {
-        when(peopleService.getPeopleById("1")).thenReturn(null);
+        when(peopleSkillsWebService.getPeopleById("1")).thenReturn(null);
 
-        ResponseEntity<People> result = peopleController.getPeopleById("1");
+        ResponseEntity<People> result = peopleSkillsController.getPeopleById("1");
 
         assertThat(result.getStatusCode(), is(HttpStatus.NOT_FOUND));
     }
@@ -86,18 +88,18 @@ public class PeopleControllerTest {
         Skills skills = Skills.builder().level("expertise").skillsList(Arrays.asList("A", "B", "c")).build();
         People people = People.builder().id("1").name("foo").skills(Arrays.asList(skills)).build();
 
-        peopleController.updatePeople(people, "1");
+        peopleSkillsController.updatePeople(people, "1");
 
-        verify(peopleService).updatePeople(ArgumentMatchers.any(People.class), anyString());
+        verify(peopleSkillsWebService).updatePeople(ArgumentMatchers.any(People.class), anyString());
     }
 
 
     @Test
     public void testDeletePeople() {
         // Run the test
-        peopleController.deletePeople("id");
+        peopleSkillsController.deletePeople("id");
 
         // Verify the results
-        verify(peopleService).deletePeople("id");
+        verify(peopleSkillsWebService).deletePeople("id");
     }
 }

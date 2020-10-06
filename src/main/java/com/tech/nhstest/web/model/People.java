@@ -1,9 +1,10 @@
-package com.tech.nhstest.model;
+package com.tech.nhstest.web.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -16,7 +17,8 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class People {
+@ToString
+public class People implements Serializable {
 
     private String id;
     private String name;

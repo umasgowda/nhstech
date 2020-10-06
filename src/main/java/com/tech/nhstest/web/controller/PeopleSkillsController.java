@@ -1,7 +1,7 @@
-package com.tech.nhstest.controller;
+package com.tech.nhstest.web.controller;
 
-import com.tech.nhstest.model.People;
-import com.tech.nhstest.service.PeopleService;
+import com.tech.nhstest.web.model.People;
+import com.tech.nhstest.web.service.PeopleSkillsWebService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,19 +19,19 @@ import java.util.List;
  * Reponsible for managing people API CRUD resources
  */
 @RestController
-public class PeopleController {
+public class PeopleSkillsController {
 
     @Autowired
-    private PeopleService peopleService;
+    private PeopleSkillsWebService peopleSkillsWebService;
 
     @RequestMapping(value = "/people", method = RequestMethod.GET)
     public List<People> getAllPeople() {
-        return peopleService.getAllPeople();
+        return peopleSkillsWebService.getAllPeople();
     }
 
     @RequestMapping(value = "/people/{id}", method = RequestMethod.GET)
     public ResponseEntity<People> getPeopleById(@PathVariable String id) {
-        People people = peopleService.getPeopleById(id);
+        People people = peopleSkillsWebService.getPeopleById(id);
         if (people != null) {
             return new ResponseEntity<People>(people, HttpStatus.OK);
         }
@@ -40,17 +40,17 @@ public class PeopleController {
 
     @RequestMapping(value = "/people", method = RequestMethod.POST)
     public void addPeople(@RequestBody List<People> peopleList) {
-        peopleService.addPeople(peopleList);
+        peopleSkillsWebService.addPeople(peopleList);
     }
 
     @RequestMapping(value = "/people/{id}", method = RequestMethod.PUT)
     public void updatePeople(@RequestBody People people, @PathVariable String id) {
-        peopleService.updatePeople(people, id);
+        peopleSkillsWebService.updatePeople(people, id);
     }
 
     @RequestMapping(value = "/people/{id}", method = RequestMethod.DELETE)
     public void deletePeople(@PathVariable String id) {
-        peopleService.deletePeople(id);
+        peopleSkillsWebService.deletePeople(id);
     }
 
 }
