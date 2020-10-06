@@ -14,6 +14,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+/**
+ * A service responsible for transforming and processing the data from api to data layer.
+ */
 @Service
 @Slf4j
 public class PeopleSkillsDataService {

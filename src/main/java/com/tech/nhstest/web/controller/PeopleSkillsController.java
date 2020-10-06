@@ -15,8 +15,8 @@ import java.util.List;
 
 
 /**
- *
- * Reponsible for managing people API CRUD resources
+ * People skills management API.
+ * Responsible for managing people skills CRUD operations.
  */
 @RestController
 public class PeopleSkillsController {

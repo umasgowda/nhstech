@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * Responsible for processing the data.
+ * A service responsible for passing data from api to data layer.
  */
 @Service
 public class PeopleSkillsWebService {
